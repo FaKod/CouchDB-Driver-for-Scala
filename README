@@ -1,0 +1,29 @@
+This code is only a proof on concept for the following ideas:
+
+The idea is to use transfer classes (drafted as Java classes in package ...couchdb.transfer) that are persisted. The conversion to JSON objects are done using the JERSEY REST client.
+In the ProofOfConcept I used a CUnit as a transfer object which should have a location and a status (not implemented).
+
+The CUnit "entity" is used by an CUnitService that is responsible for persisting the CUnit (and can provide some additional processing functions, f.e. change CUnit relations, name checks etc.). For changing locations and status a Trait is used. Based on the idea that there may be other objects with a status and a location.
+
+Therefore the service is created by:
+
+val s = new UnitService with LocationService with StatusService
+
+Usage is easy then:
+
+
+  var c = new CUnit
+  c.unitIdentification = s.dba.getId
+  c = s create c
+  s delete c
+
+s.dba.getId is using the CouchDB capability to create IDs.
+
+The DesignViewTrait is used to handle CouchDBs DesignViews (queries)
+
+Package ...couchdb.test holds the tests. You can pick example usages from there
+
+I wrote a blog entry about the idea in principal: http://blog.fakod.eu/?p=557
+
+
+
