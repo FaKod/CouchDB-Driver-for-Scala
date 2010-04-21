@@ -11,7 +11,6 @@ val s = new UnitService with LocationService with StatusService
 
 Usage is easy then:
 
-
   var c = new CUnit
   c.unitIdentification = s.dba.getId
   c = s create c
@@ -19,7 +18,7 @@ Usage is easy then:
 
 s.dba.getId is using the CouchDB capability to create IDs.
 
-The DesignViewTrait is used to handle CouchDBs DesignViews (queries)
+The DesignViewTrait is used to handle CouchDBs DesignViews (these are queries. In this case, since a CUnit is in a command structure, find the successors of a CUnit)
 
 Package ...couchdb.test holds the tests. You can pick example usages from there
 
