@@ -7,14 +7,18 @@ The CUnit "entity" is used by an CUnitService that is responsible for persisting
 
 Therefore the service is created by:
 
+<pre>
 val s = new UnitService with LocationService with StatusService
+</pre>
 
 Usage is easy then:
 
+<pre>
   var c = new CUnit
   c.unitIdentification = s.dba.getId
   c = s create c
   s delete c
+</pre>
 
 s.dba.getId is using the CouchDB capability to create IDs.
 
